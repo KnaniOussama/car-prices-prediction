@@ -30,12 +30,10 @@ function App() {
   // State for form inputs
   const [formData, setFormData] = useState({
     brand: 'Toyota',
-    Vehicle_color: 'Blanc',
     Mileage: 50000,
     Vehicle_condition: 'Avec kilométrage',
     engine_size: '1.6L',
     year: 2018,
-    gearbox: 'Manuelle',
   });
   const [predictedPrice, setPredictedPrice] = useState(null);
   const [error, setError] = useState(null);
@@ -45,11 +43,8 @@ function App() {
 
   // Extract unique values for form dropdowns
   const brands = [...new Set(validData.map(item => item.brand))].sort();
-  const colors = [...new Set(validData.map(item => item.Vehicle_color))].sort();
   const conditions = [...new Set(validData.map(item => item.Vehicle_condition))].sort();
-  const gearboxes = [...new Set(validData.map(item => item.gearbox))].sort();
   const engineSizes = ['<1.0L', '1.0L', '1.6L', '2.0L', '3.0L', '4.0L', '>4.0L'];
-
   // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -169,19 +164,7 @@ function App() {
                 ))}
               </select>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Color</label>
-              <select
-                name="Vehicle_color"
-                value={formData.Vehicle_color}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-              >
-                {colors.map(color => (
-                  <option key={color} value={color}>{color}</option>
-                ))}
-              </select>
-            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Mileage (km)</label>
               <input
@@ -230,19 +213,6 @@ function App() {
                 min="1980"
                 max="2023"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Gearbox</label>
-              <select
-                name="gearbox"
-                value={formData.gearbox}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-              >
-                {gearboxes.map(gearbox => (
-                  <option key={gearbox} value={gearbox}>{gearbox}</option>
-                ))}
-              </select>
             </div>
             <div className="md:col-span-2">
               <button

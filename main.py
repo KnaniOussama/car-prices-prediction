@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 app.add_middleware(
