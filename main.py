@@ -5,7 +5,13 @@ import joblib
 import numpy as np
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Your React frontend's origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, OPTIONS, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 model = joblib.load('rf_model.pkl')
 preprocessor = joblib.load('preprocessor.pkl')
 
