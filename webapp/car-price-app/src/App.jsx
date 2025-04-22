@@ -104,7 +104,7 @@ function App() {
       {
         label: 'Cars',
         data: validData.map(item => ({
-          x: item.  ,
+          x: item.year,
           y: item.Price,
         })),
         backgroundColor: 'rgba(54, 162, 235, 0.6)',
